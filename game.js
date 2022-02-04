@@ -1,3 +1,10 @@
+const colors = [
+  '4464AD',   // blue
+  'EA526F',   // red
+  'F79824',   // orange
+  '659157',   // green
+  'F7AF9D',   // pink
+]
 class Game {
   constructor () {
     this.getAttributes()
@@ -20,6 +27,7 @@ class Game {
   }
 
   render() {
+    document.body.style.backgroundColor = "#" + colors[this.current];
     document.getElementById("player").innerHTML = `Player #${this.player.id}` 
     document.getElementById("time").innerHTML = `${Math.ceil(this.time)}`
     document.getElementById("suspend").hidden = !this.isSuspended
