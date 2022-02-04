@@ -44,10 +44,17 @@ class Game {
   clock() {
     if (this.player.basic > 0) {
       this.player.basic -= 0.1
-    } else {
+    } else if (this.player.final > 0) {
       this.player.final -= 0.1
+    } else {
+      this.stop()
     }
     this.render()
+  }
+
+  stop() {
+    const result = this.players.map((p) => `${p.id}=${Math.ceil(p.basic)}`).join("&")
+    window.location.assign(`result.html?${result}`)
   }
 }
 
