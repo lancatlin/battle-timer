@@ -22,7 +22,7 @@ class Game {
   render() {
     document.getElementById("player").innerHTML = `Player #${this.player.id}` 
     document.getElementById("time").innerHTML = `${Math.ceil(this.time)}`
-    document.getElementById("suspend").setAttribute("hidden", !this.isSuspended)
+    document.getElementById("suspend").hidden = !this.isSuspended
   }
 
   nextPlayer() {
