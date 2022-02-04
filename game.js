@@ -21,17 +21,26 @@ class Game {
 
   render() {
     document.getElementById("player").innerHTML = `Player #${this.player.id}` 
+    document.getElementById("time").innerHTML = `${this.time}`
   }
 
   nextPlayer() {
     this.current += 1
     this.current %= this.players_count
+    this.player.basic -= 1
     this.render()
   }
 
   get player() {
     return this.players[this.current]
   }
+
+  get time() {
+    return this.player.basic > 0 
+      ? this.player.basic
+      : this.player.final
+  }
 }
 
 const game = new Game()
+game.render()
