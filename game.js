@@ -32,7 +32,7 @@ class Game {
   render() {
     document.body.style.backgroundColor = "#" + colors[this.current % colors.length];
     document.getElementById("player").innerHTML = `Player #${this.player.id}` 
-    document.getElementById("time").innerHTML = `${Math.ceil(this.time)}`
+    document.getElementById("time").innerHTML = this.time
     document.getElementById("suspend").hidden = !this.isSuspended
   }
 
@@ -48,9 +48,10 @@ class Game {
   }
 
   get time() {
-    return this.player.basic > 0 
+    const t = Math.ceil(this.player.basic > 0 
       ? this.player.basic
-      : this.player.final
+      : this.player.final)
+    return `${Math.floor(t / 60)} m ${Math.floor(t % 60)} s`
   }
 
   clock() {
