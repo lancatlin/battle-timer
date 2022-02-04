@@ -21,12 +21,13 @@ class Game {
 
   render() {
     document.getElementById("player").innerHTML = `Player #${this.player.id}` 
-    document.getElementById("time").innerHTML = `${this.time}`
+    document.getElementById("time").innerHTML = `${Math.ceil(this.time)}`
   }
 
   nextPlayer() {
     this.current += 1
     this.current %= this.players_count
+    this.player.final = this.final_time
     this.render()
   }
 
@@ -41,11 +42,15 @@ class Game {
   }
 
   clock() {
-    this.player.basic -= 1
+    if (this.player.basic > 0) {
+      this.player.basic -= 0.1
+    } else {
+      this.player.final -= 0.1
+    }
     this.render()
   }
 }
 
 const game = new Game()
-setInterval(() => game.clock(), 1000);
+setInterval(() => game.clock(), 100);
 game.render()
