@@ -21,8 +21,9 @@ main {
   height: 100%;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
 
-a {
+button {
   padding: 10px;
 }
