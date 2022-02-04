@@ -11,7 +11,7 @@ class Game {
     this.final_time = Number(param.get("final"))
     
     this.players = new Array(this.players_count).fill(null).map((v, i) => ({
-      id: i,
+      id: i + 1,
       basic: this.basic_time,
       final: this.final_time,
     }))
