@@ -1,7 +1,7 @@
-
 class Game {
   constructor () {
     this.getAttributes()
+    this.isSuspended = false
   }
 
   getAttributes() {
@@ -22,6 +22,7 @@ class Game {
   render() {
     document.getElementById("player").innerHTML = `Player #${this.player.id}` 
     document.getElementById("time").innerHTML = `${Math.ceil(this.time)}`
+    document.getElementById("suspend").setAttribute("hidden", !this.isSuspended)
   }
 
   nextPlayer() {
@@ -42,6 +43,9 @@ class Game {
   }
 
   clock() {
+    if (this.isSuspended) {
+      return
+    }
     if (this.player.basic > 0) {
       this.player.basic -= 0.1
     } else if (this.player.final > 0) {
@@ -55,6 +59,12 @@ class Game {
   stop() {
     const result = this.players.map((p) => `${p.id}=${Math.ceil(p.basic)}`).join("&")
     window.location.assign(`result.html?${result}`)
+  }
+
+  suspend() {
+    this.isSuspended = !this.isSuspended
+    console.log('suspend', this.isSuspended)
+    this.render()
   }
 }
 
