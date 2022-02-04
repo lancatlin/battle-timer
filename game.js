@@ -27,7 +27,6 @@ class Game {
   nextPlayer() {
     this.current += 1
     this.current %= this.players_count
-    this.player.basic -= 1
     this.render()
   }
 
@@ -40,7 +39,13 @@ class Game {
       ? this.player.basic
       : this.player.final
   }
+
+  clock() {
+    this.player.basic -= 1
+    this.render()
+  }
 }
 
 const game = new Game()
+setInterval(() => game.clock(), 1000);
 game.render()
