@@ -4,18 +4,34 @@
     <title>Battle Timer</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device.width, initial-scale=1.0">
+    <script src="index.js" defer></script>
   </head>
   <body>
     <main>
-      <form method="GET" action="game.html">
-	<label>Players:</label>
-	<input type="number" name="players" value="4"><br>
-	<label>Basic Time:</label>
-	<input type="number" name="basic" value="30"><br>
-	<label>Final Time:</label>
-	<input type="number" name="final" value="10"><br>
-	<input type="submit" value="Start Game">
-      </form>
+      <div class="main">
+	<h1>Battle Timer</h1>
+	<form name="setupForm" method="GET" action="game.html">
+	  <label>Players:</label>
+	  <input type="number" name="players" value="4" max="8">
+	  <br>
+	  <label>Basic Time:</label>
+	  <input type="number" id="basic_m" value="30" max="1000" min="0">
+	  <label>m</label>
+	  <input type="number" id="basic_s" value="0" max="59" min="0">
+	  <label>s</label>
+	  <br>
+	  <label>Final Time:</label>
+	  <input type="number" id="final_m" value="1" max="59" min="0">
+	  <label>m</label>
+	  <input type="number" id="final_s" value="0" max="59" min="0">
+	  <label>s</label>
+	  <br>
+
+	  <input type="hidden" id="basic" name="basic" value="10">
+	  <input type="hidden" id="final" name="final" value="10">
+	  <input type="submit" value="submit">
+	</form>
+      </div>
     </main>
   </body>
 </html>
